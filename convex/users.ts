@@ -70,3 +70,19 @@ export const updateBanStatus = mutation({
     await ctx.db.patch(user._id, { isBanned: args.isBanned });
   },
 });
+
+
+export const getCurrentUser = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return null;
+
+    const user = await ctx.db
+      .query("users")
+      .filter(q => q.eq(q.field("userId"), identity.subject))
+      .first();
+      
+    return user;
+  }
+});
