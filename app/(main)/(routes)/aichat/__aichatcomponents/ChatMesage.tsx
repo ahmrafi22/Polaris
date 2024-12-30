@@ -143,7 +143,7 @@ const FormattedText: React.FC<{ text: string }> = ({ text }) => {
 
 const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
   const { user } = useUser();
-  const [selectedImage, setSelectedImage] = useState<any>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <>
@@ -171,7 +171,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
                 {message.image && (
                   <div
                     className="relative w-60 h-60 mb-3 rounded-xl border border-gray-700/30 cursor-pointer"
-                    onClick={() => setSelectedImage(message.image)}
+                    onClick={() => setSelectedImage(message.image || null)}
                   >
                     <Image
                       src={message.image}
