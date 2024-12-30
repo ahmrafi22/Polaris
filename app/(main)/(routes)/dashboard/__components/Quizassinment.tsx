@@ -4,6 +4,7 @@ import { useQuery, useMutation } from "convex/react";
 import { useUser } from "@clerk/clerk-react";
 import { api } from "@/convex/_generated/api";
 import { differenceInDays } from 'date-fns';
+import { Id } from "@/convex/_generated/dataModel";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription
 } from "@/components/ui/dialog";
@@ -17,6 +18,21 @@ import { toast } from "sonner";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue
 } from "@/components/ui/select";
+
+interface QuizItem {
+  _id: Id<"quizzesAndAssignments">;
+  userId: string;
+  name: string;
+  date: string;
+  label: 'quiz' | 'assignment';
+}
+
+interface UpdateQuizParams {
+  _id: string;  // Changed from id to _id to match the API
+  name: string;
+  date: string;
+  label: 'quiz' | 'assignment';
+}
 
 const font = Days_One({
   subsets: ["latin"],
@@ -37,7 +53,7 @@ const QuizAssignment = () => {
   const [date, setDate] = React.useState("");
   const [label, setLabel] = React.useState<"quiz" | "assignment">("quiz");
   const [isAddDialogOpen, setIsAddDialogOpen] = React.useState(false);
-  const [selectedItem, setSelectedItem] = React.useState<any>(null);
+  const [selectedItem, setSelectedItem] = React.useState<QuizItem | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
 
   const items = useQuery(api.quiz.list, user ? { userId: user.id } : 'skip');
@@ -70,7 +86,7 @@ const QuizAssignment = () => {
     
     try {
       await update({
-        id: selectedItem._id,
+        id: selectedItem._id, 
         name,
         date,
         label,
@@ -90,7 +106,7 @@ const QuizAssignment = () => {
     setSelectedItem(null);
   };
 
-  const openEditDialog = (item: any) => {
+  const openEditDialog = (item: QuizItem) => {
     setSelectedItem(item);
     setName(item.name);
     setDate(item.date);
@@ -98,7 +114,7 @@ const QuizAssignment = () => {
     setIsEditDialogOpen(true);
   };
 
-  const getDaysLeft = (date: string) => {
+  const getDaysLeft = (date: string): number => {
     return differenceInDays(new Date(date), new Date());
   };
 
