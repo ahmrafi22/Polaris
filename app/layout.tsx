@@ -1,41 +1,48 @@
-import { Toaster } from "sonner";
-import type { Metadata } from "next";
-import "./globals.css";
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import { ConvexProvider } from "@/components/providers/convex-provider";
-import { ModalProvider } from "@/components/providers/modal-provider";
-import { EdgeStoreProvider } from "@/lib/edgestore";
+"use client"
 
-export const metadata: Metadata = {
-  title: "Polaris app",
-  description: "Polaris a new way of productity",
-  icons: {
-    icon: "/polaris.svg",
-  }
-};
+import { Spinner } from "@/components/spinners";
+import { useConvexAuth, useQuery } from "convex/react";
+import { redirect } from "next/navigation";
+import { Navigation } from "./__components/Navigation";
+import { SearchCommand } from "@/components/search-command";
+import { api } from "@/convex/_generated/api";
+import { useEffect } from "react";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-  <html lang="en" suppressHydrationWarning>
-    <body>
-      <ConvexProvider>
-        <EdgeStoreProvider>
-         <ThemeProvider
-           attribute="class"
-           defaultTheme="system"
-           enableSystem
-           disableTransitionOnChange>
-            <Toaster position="bottom-right" />
-            <ModalProvider />
-           {children}
-         </ThemeProvider>
-         </EdgeStoreProvider>
-      </ConvexProvider>
-    </body>
-  </html>
-  );
+const MainLayout = ({
+    children
+}: {
+    children: React.ReactNode;
+}) => {
+    const { isAuthenticated, isLoading } = useConvexAuth();
+    const user = useQuery(api.users.getCurrentUser);
+
+    useEffect(() => {
+        if (user?.isBanned) {
+            redirect("/banned");
+        }
+    }, [user]);
+
+    if (isLoading) {
+        return (
+            <div className="h-full flex items-center justify-center">
+                <Spinner size={"lg"}/>
+            </div>
+        );
+    }
+
+    if (!isAuthenticated) {
+        return redirect("/");
+    }
+
+    return (
+        <div className="h-full flex dark:bg-[#1F1F1F]">
+            <Navigation />
+            <main className="flex-1 h-full overflow-y-auto">
+                <SearchCommand />
+                {children}
+            </main>
+        </div>
+    );
 }
+ 
+export default MainLayout;
