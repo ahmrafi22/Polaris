@@ -49,7 +49,7 @@ export const Navbar =() => {
           </SignInButton>
 
           <SignInButton mode="modal">
-            <Button  size={"sm"}>
+            <Button className="hidden md:block"  size={"sm"}>
               Get Polaris
             </Button>
           </SignInButton>

@@ -28,7 +28,7 @@ interface QuizItem {
 }
 
 interface UpdateQuizParams {
-  _id: string;  // Changed from id to _id to match the API
+  _id: string;  
   name: string;
   date: string;
   label: 'quiz' | 'assignment';

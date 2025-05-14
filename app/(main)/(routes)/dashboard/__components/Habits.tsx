@@ -90,7 +90,7 @@ const DailyHabits = () => {
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-2">
                   <Hash className="text-blue-500" />
-                  <span className="dark:text-white font-semibold font-medium">
+                  <span className="dark:text-white font-semibold">
                     {habit.habit}
                   </span>
                 </div>

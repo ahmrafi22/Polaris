@@ -31,11 +31,11 @@ export const Heading = () => {
   const { openSignIn } = useClerk();
   
   return (
-    <div className="max-w-5xl space-y-4">
+    <div className="max-w-5xl space-y-4 -mb-10">
       <div className="flex justify-center">
         <motion.h1
           className={cn(
-            "flex whitespace-pre text-2xl sm:text-4xl md:text-5.5xl dark:text-white text-black",
+            "flex whitespace-pre text-3xl sm:text-4xl md:text-5.5xl dark:text-white text-black",
             font.className
           )}
           layout
@@ -66,7 +66,7 @@ export const Heading = () => {
         <h1
           className={cn(
             font.className,
-            "dark:text-white text-4xl sm:text-5xl md:text-5.5xl py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            "dark:text-white text-[35px] sm:text-5xl md:text-5.5xl py-0.5 sm:py-1 md:py-2 justify-center rounded-lg mb-11"
           )}
         >
           All in One Place{" "}
@@ -86,7 +86,7 @@ export const Heading = () => {
         </h1>
       </div>
 
-      <h3 className={cn("text-base sm:text-[10px] md:text-[17px] tracking-wider font-medium text-center mt-10", font3.className)}>
+      <h3 className={cn("text-base sm:text-[10px] md:text-[17px] tracking-wider font-medium text-center", font3.className)}>
         Make your everyday more productive!!
       </h3>
       
