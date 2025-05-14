@@ -36,7 +36,6 @@ interface HeroSection {
     imageAlt: string;
     gradient: string;
     features: string[];
-    bgColor: string;
     textColor: string;
 }
 
@@ -138,7 +137,6 @@ const heroSections: HeroSection[] = [
             "Lightweight & Fast",
             "Instant share with anyone"
         ],
-        bgColor: "bg-blue-900",
         textColor: "text-blue-50"
     },
     {
@@ -154,7 +152,6 @@ const heroSections: HeroSection[] = [
             "Build and maintain positive habits",
             "Visualize your progress with analytics"
         ],
-        bgColor: "bg-purple-900",
         textColor: "text-purple-50"
     },
     {
@@ -170,7 +167,6 @@ const heroSections: HeroSection[] = [
             "Receive creative writing assistance",
             "Access educational resources"
         ],
-        bgColor: "bg-green-900",
         textColor: "text-green-50"
     },
     {
@@ -185,7 +181,6 @@ const heroSections: HeroSection[] = [
             "Collaborate in real-time",
             "Export in multiple formats"
         ],
-        bgColor: "bg-orange-900",
         textColor: "text-orange-50"
     }
 ];
@@ -197,10 +192,9 @@ interface HeroCardProps {
 const HeroCard: React.FC<HeroCardProps> = ({ section }) => {
     return (
         <div className={cn(
-            "w-full lg:w-[80%] h-auto md:h-[70vh] border-gray-300 border-2 p-6 md:p-12 rounded-3xl overflow-hidden relative",
-            section.bgColor
+            "w-full lg:w-[80%] h-auto md:h-[70vh] border-gray-300 border-2 p-6 md:p-12 rounded-3xl overflow-hidden relative bg-gradient-to-l from-gray-900 to-gray-600"
         )}>
-            <div className="flex flex-col md:flex-row justify-between h-full relative">
+            <div className="flex flex-col sm:flex-row justify-between h-full relative">
                 <div className="relative md:absolute md:-left-16 lg:-left-24 xl:-left-40 top-0 w-full md:w-3/5 h-48 md:h-full z-10">
                     <div className="relative w-full h-full">
                         <Image 

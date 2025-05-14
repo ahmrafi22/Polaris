@@ -7,7 +7,7 @@ const PromotionLayout =({
     children:React.ReactNode;
 }) => {
     return(
-        <div className="min-h-screen dark:bg-[#1F1F1F]">
+        <div className="min-h-screen dark:bg-gradient-to-tl from-gray-600 to-[#1F1F1F]">
             <Navbar />
             <UserCreationHandler />
             <main className="pt-36">

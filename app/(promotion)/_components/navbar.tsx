@@ -18,11 +18,10 @@ const font1 = Orbitron({
   weight: ["500"],
 });
 
-export const Navbar =() => {
-  const {isAuthenticated, isLoading} = useConvexAuth()
-  const scrolled =useScrollTop();
+export const Navbar = () => {
+  const { isAuthenticated, isLoading } = useConvexAuth();
+  const scrolled = useScrollTop();
   const router = useRouter();
-
 
   useEffect(() => {
     if (isAuthenticated && !isLoading) {
@@ -30,45 +29,47 @@ export const Navbar =() => {
     }
   }, [isAuthenticated, isLoading, router]);
 
-
   return (
-    <div className={cn("z-50 bg-background dark:bg-[#1F1F1F] fixed top-0 flex items-center w-full p-6", scrolled && "border-b shadow-sm", font1.className)} >
-      <Logo />
-      <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
-        
+    <div className={cn(
+      "z-50 fixed top-0 flex items-center w-full p-6 ", 
+      scrolled && "border-b shadow-sm backdrop-blur-2xl",
+      font1.className
+    )}>
+      <div className="flex items-center">
+        <Logo />
+      </div>
+      <div className="md:ml-auto ml-auto flex items-center gap-x-2">
         {isLoading && (
           <Spinner />
         )}
 
         {!isAuthenticated && !isLoading && (
           <>
-          <SignInButton mode="modal">
-            <Button variant={"ghost"} size={"sm"}>
-              Log in
-            </Button>
-          </SignInButton>
+            <SignInButton mode="modal">
+              <Button variant="ghost" size="sm">
+                Log in
+              </Button>
+            </SignInButton>
 
-          <SignInButton mode="modal">
-            <Button className="hidden md:block"  size={"sm"}>
-              Get Polaris
-            </Button>
-          </SignInButton>
+            <SignInButton mode="modal">
+              <Button className="hidden md:block" size="sm">
+                Get Polaris
+              </Button>
+            </SignInButton>
           </>
         )}
 
-        {isAuthenticated && !isLoading &&(
+        {isAuthenticated && !isLoading && (
           <>
-
-          <Button variant="ghost" size="sm" asChild>
-            <Link href="/documents">
-               Enter Polaris
-            </Link>
-          </Button>
-          <UserButton />
-
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/documents">
+                Enter Polaris
+              </Link>
+            </Button>
+            <UserButton />
           </>
         )}
-        <ModeToggle/>
+        <ModeToggle />
       </div>
     </div>
   )

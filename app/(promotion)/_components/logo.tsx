@@ -11,7 +11,7 @@ const font = Orbitron({
 
 export const Logo  = () => {
     return ( 
-        <div className="hidden md:flex items-center gap-x-2">
+        <div className="flex items-center gap-x-2">
             <Image
               src="/polaris.svg"
               height="40"

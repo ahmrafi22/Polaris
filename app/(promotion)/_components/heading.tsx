@@ -2,7 +2,7 @@
 
 import { useConvexAuth } from "convex/react";
 import { Spinner } from "@/components/spinners";
-import { SignInButton, useClerk } from "@clerk/clerk-react";
+import { useClerk } from "@clerk/clerk-react";
 import TextRotate from "./animation";
 import { motion } from "motion/react";
 
@@ -48,7 +48,7 @@ export const Heading = () => {
             Your{" "}
           </motion.span>
           <TextRotate
-            texts={["documents", "Ideas", "Plans", "Tasks", "Sketches"]}
+            texts={["Documents", "Ideas", "Plans", "Tasks", "Sketches"]}
             mainClassName="text-white px-2 sm:px-3 md:px-4 bg-[#ff5941] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
