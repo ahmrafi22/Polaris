@@ -4,7 +4,7 @@ import { useConvexAuth } from "convex/react";
 import { Spinner } from "@/components/spinners";
 import { useClerk } from "@clerk/clerk-react";
 import TextRotate from "./animation";
-import { motion } from "motion/react";
+import { motion, LayoutGroup } from "motion/react";
 
 import { Days_One, Orbitron } from "next/font/google";
 
@@ -33,33 +33,35 @@ export const Heading = () => {
   return (
     <div className="max-w-5xl space-y-4 -mb-10">
       <div className="flex justify-center">
-        <motion.h1
-          className={cn(
-            "flex whitespace-pre text-3xl sm:text-4xl md:text-5.5xl dark:text-white text-black",
-            font.className
-          )}
-          layout
-        >
-          <motion.span
-            className="pt-0.5 sm:pt-1 md:pt-2"
+        <LayoutGroup>
+          <motion.h1
+            className={cn(
+              "flex whitespace-pre text-3xl sm:text-4xl md:text-5.5xl dark:text-white text-black",
+              font.className
+            )}
             layout
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
           >
-            Your{" "}
-          </motion.span>
-          <TextRotate
-            texts={["Documents", "Ideas", "Plans", "Tasks", "Sketches"]}
-            mainClassName="text-white px-2 sm:px-3 md:px-4 bg-[#ff5941] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-            staggerFrom={"last"}
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-120%" }}
-            staggerDuration={0.025}
-            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
-            rotationInterval={2000}
-          />
-        </motion.h1>
+            <motion.span
+              className="pt-0.5 sm:pt-1 md:pt-2"
+              layout
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            >
+              Your{" "}
+            </motion.span>
+            <TextRotate
+              texts={["Documents", "Ideas", "Plans", "Tasks", "Sketches"]}
+              mainClassName="text-white px-2 sm:px-3 md:px-4 bg-[#ff5941] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
+            />
+          </motion.h1>
+        </LayoutGroup>
       </div>
       
       <div className="flex justify-center">
