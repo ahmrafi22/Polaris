@@ -201,7 +201,7 @@ const HeroCard: React.FC<HeroCardProps> = ({ section }) => {
                             src={section.imageSrc}
                             alt={section.imageAlt}
                             fill
-                            className="rounded-[20px] sm:mr-6 object-cover shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+                            className="rounded-[20px] sm:mr-6 object-cover shadow-[0_20px_60px_rgba(0,0,0,0.5)] [mask-image:linear-gradient(to_top_right,transparent_5%,white_60%)]"
                         />
                     </div>
                 </div>
