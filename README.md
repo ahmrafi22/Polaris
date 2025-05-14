@@ -47,7 +47,8 @@ Collaborative and intuitive canvas for visual thinkers.
 - **Clerk** - for authentication
 - **Blocknote** – Rich text editor  
 - **Gemini AIP** – Google generative AI integration  
-- **Tailwind CSS** - Modern styling
+- **Tailwind CSS** - Modern styling  
+- **Time Taken** - [![wakatime](https://wakatime.com/badge/user/d7d5cf63-4ec9-422f-a677-8823091fc3db/project/7bb43975-dde9-43d3-acfd-802880527b43.svg)](https://wakatime.com/badge/user/d7d5cf63-4ec9-422f-a677-8823091fc3db/project/7bb43975-dde9-43d3-acfd-802880527b43)
 
 <!-- NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""
 CLERK_SECRET_KEY=""
